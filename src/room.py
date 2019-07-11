@@ -1,15 +1,19 @@
-from items import items
-
 class Room:
     def __init__(self, name, description):
         self.name = name
         self.description = description
-        self.loot = items #items
+        self.items = [] #items
         self.to_n = None
         self.to_e = None
         self.to_s = None
         self.to_w = None
-
+    def __str__(self):
+        str = f"""
+                \n {self.name} 
+                \n {self.description}
+                \n {self.items}"""
+        return str
+    
     # def move_to(self, direction):
 	# 	if direction == "n":
 	# 		return self.n_to

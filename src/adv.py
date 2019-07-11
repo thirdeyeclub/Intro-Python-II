@@ -1,7 +1,6 @@
 from room import Room
 from player import Player
 from item import Item
-from items import items
 # Declare all the rooms
 
 room = {
@@ -23,6 +22,9 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+# items
+# gold = Item("gold", "A shinny but worthless object."),
+# trash = Item("pile of trash", "might be something useful in there.")
 
 # Link rooms together
 
@@ -40,38 +42,26 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player("Name", room["outside"])
+player = Player("Name", room['outside'])
+current_room = player.current_room
 
-# Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
-compass_direction = ["e" ,"n" "s" , "w"]
+print(current_room)
+
+compass_directions = ["n", "s", "e", "w","q","d","i"]
 
 while True:
-	cmd = input('--->  ')
-	# moving
-	_current_room = player._current_room
-	if cmd in compass_direction:
-		direction = cmd
-		if getattr(player._current_room, f"{direction}_to") == None:
-			print("you cannot go that way!")
-		else:
-			player._current_room = getattr(player._current_room, f"{direction}_to")
-			print(player._current_room)
-	elif cmd == 'q':
-		print("Exiting Game")
-		break
-	elif cmd == 'd':
-		print(f"{player._current_room.name} has the following items {player._current_room.items}")
-	elif cmd == 'i':
-		print(f"You the following items {player.items}")
-	else:
-		print('Valid choices are n, e, s, w for moving in a direction, \td for displaying items in the room. \t i for displaying what you are carrying \t get (item) or drop (item) to access items in the room \t or q to end the game\n') 
+    # Wait for user input
+    cmd = input("-> ")
+    if cmd in compass_directions:
+        # If input is valid, move the player and loop
+        player.travel(cmd)
+		# elif cmd == "q":
+		# 	print("Exiting Game")
+		# 	break
+		# elif cmd == "d":
+		# 	print(f"{player.current_room.name} has the following items {player.current_room.items}")
+		# elif cmd == 'i':
+		# 	print(f"You the following items {player.items}")
+		# else:
+		# 	print('Valid choices are n, e, s, w for moving in a direction, \td for displaying items in the room. \t i for displaying what you are carrying \t get (item) or drop (item) to access items in the room \t or q to end the game\n') 
 
