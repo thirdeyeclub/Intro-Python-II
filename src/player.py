@@ -18,7 +18,7 @@ class Player:
             print(self.current_room)
         else:
             # Else print an error message
-            print("Sorry! there's no room here.", "\n")
+            print("you cannot go that way")
 
     # def get_item(self, Item):
     #     self.items.append(Item)
