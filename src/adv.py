@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 from item import Item
+from items import items
 # Declare all the rooms
 
 room = {
@@ -39,7 +40,7 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player0 = Player("Name", room["outside"])
+player = Player("Name", room["outside"])
 
 # Write a loop that:
 #
@@ -51,28 +52,26 @@ player0 = Player("Name", room["outside"])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+compass_direction = ["e" ,"n" "s" , "w"]
 
 while True:
 	cmd = input('--->  ')
-	if cmd in ['n', 'e', 's', 'w']:
-		you.move(cmd)
+	# moving
+	_current_room = player._current_room
+	if cmd in compass_direction:
+		direction = cmd
+		if getattr(player._current_room, f"{direction}_to") == None:
+			print("you cannot go that way!")
+		else:
+			player._current_room = getattr(player._current_room, f"{direction}_to")
+			print(player._current_room)
 	elif cmd == 'q':
+		print("Exiting Game")
 		break
 	elif cmd == 'd':
-		print(f"{you._current_room.name} has the following items {you._current_room.items}")
+		print(f"{player._current_room.name} has the following items {player._current_room.items}")
 	elif cmd == 'i':
-		print(f"You the following items {you.items}")
-	elif ('get' in cmd or 'take' in cmd):
-		item = cmd.split(" ")[1]
-		# print(f"{item}")
-	you._current_room.remove_item(items[item])
-		you.items(items[item])
-
-	elif 'drop' in cmd:
-		# print(f"{cmd}")
-		item = cmd.split(" ")[1]
-		you._current_room.add_item(items[item])
-		you.drop_item(items[item])
+		print(f"You the following items {player.items}")
 	else:
 		print('Valid choices are n, e, s, w for moving in a direction, \td for displaying items in the room. \t i for displaying what you are carrying \t get (item) or drop (item) to access items in the room \t or q to end the game\n') 
 
