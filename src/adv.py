@@ -1,8 +1,8 @@
 from room import Room
 from player import Player
 from item import Item
-# Declare all the rooms
 
+# Declare all the rooms
 room = {
     'outside':  Room("Outside Cave Entrance",
                     "North of you, the cave mount beckons"),
@@ -53,8 +53,7 @@ player = Player("Name", room["outside"])
 # If the user enters "q", quit the game.
 compass_direction = ["e" ,"n", "s" , "w"]
 
-print("      Welcome to the game.\n      You can move with n, e, s, w.     \n      To view your inventory press i")
-print("      You stand out side of a cave.\n      Type d to look around")
+print("     You stand on the outskirts of town\n     To look around type d")
 while True:
 	cmd = input('--->  ')
 	# moving
