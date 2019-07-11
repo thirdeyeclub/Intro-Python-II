@@ -51,13 +51,12 @@ player = Player("Name", room["outside"])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-compass_direction = ["e" ,"n" "s" , "w"]
+compass_direction = ["e" ,"n", "s" , "w"]
 
 print("      Welcome to the game.\n      You can move with n, e, s, w.     \n      To view your inventory press i")
 print("      You stand out side of a cave.\n      Type d to look around")
 while True:
 	cmd = input('--->  ')
-	loot = print("nothing of intrest in this room.")
 	# moving
 	current_room = player.current_room
 	if cmd in compass_direction:
@@ -69,7 +68,7 @@ while True:
 	elif cmd == 'd':
 		print(f"    {player.current_room.name}\n    {player.current_room.description} \n    Around you there is {player.current_room.items}")
 	elif cmd == 'i':
-		print(f"You the following items {str(player.items)}")
+		print(f"You the have following items {str(player.items)}")
 	else:
 		print('Valid choices are n, e, s, w for moving in a direction, \td for displaying items in the room. \t i for displaying what you are carrying \t get (item) or drop (item) to access items in the room \t or q to end the game\n') 
 

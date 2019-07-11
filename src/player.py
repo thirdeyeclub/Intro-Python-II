@@ -18,7 +18,7 @@ class Player:
             print(self.current_room)
         else:
             # Else print an error message
-            print("you cannot go that way")
+            print("Sorry! there's no room here.", "\n")
 
     # def get_item(self, Item):
     #     self.items.append(Item)
@@ -28,3 +28,4 @@ class Player:
 	# 		self.items.remove(item)
 	# 	else:
 	# 		print(f"You are not carrying an item")
+    
